@@ -31,11 +31,25 @@ const genAI = new GoogleGenerativeAI(geminiApiKey);
 // Güvenlik ayarlarını biraz daha esnek yapabiliriz (isteğe bağlı, riskleri değerlendirin)
 // Bazı haber içerikleri hassas olabileceğinden filtrelemeyi tamamen kapatmak önerilmez.
 // Düşük ayarlar deneyebilirsiniz:
+// --- Güvenlik Ayarlarını Tanımla ---
 const safetySettings = [
-    { category: HarmCategory.HARM_CATEGORY_HARASSMENT, threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE },
-    { category: HarmCategory.HARM_CATEGORY_HATE_SPEECH, threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE },
-    { category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT, threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE },
-    { category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT, threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE },
+    {
+        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+        threshold: HarmBlockThreshold.BLOCK_NONE, // Taciz içeriğini engelleme
+    },
+    {
+        category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+        threshold: HarmBlockThreshold.BLOCK_NONE, // Nefret söylemini engelleme
+    },
+    {
+        category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+        threshold: HarmBlockThreshold.BLOCK_NONE, // Cinsel içeriği engelleme
+    },
+    {
+        category: HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+        threshold: HarmBlockThreshold.BLOCK_NONE, // Tehlikeli içeriği engelleme
+    },
+    // Not: Başka kategoriler varsa (API güncellenirse) onları da ekleyebilirsiniz.
 ];
 const model = genAI.getGenerativeModel({
     model: geminiModelName,
