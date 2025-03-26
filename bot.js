@@ -9,7 +9,7 @@ const geminiApiKey = process.env.GEMINI_API_KEY;
 const targetChatId = process.env.TARGET_CHAT_ID;
 const cronSchedule = process.env.CRON_SCHEDULE || '*/15 * * * *';
 const newsCount = parseInt(process.env.NEWS_COUNT || '3', 10); // Varsayılan 3 haber
-const geminiModelName = "gemini-1.5-pro-latest"; // Veya uygun güncel model
+const geminiModelName = "gemini-2.5-pro-experimental-03-25"; // Veya uygun güncel model
 const timezone = "Europe/Istanbul";
 
 // --- Kontroller ---
